@@ -3,7 +3,7 @@
 
 
  <% if @review.errors.any? %>
-   <%= @ewview.errors.count %> errors prohibited this obj from being saved:
+   <%= @review.errors.count %> errors prohibited this obj from being saved:
     <ul>
      <% @review.errors.full_messages.each do |message| %>
      <li><%= message %></li>
