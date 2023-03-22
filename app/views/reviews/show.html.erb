@@ -1,2 +1,52 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+<main>
+  <p id="notice"><%= flash[:notice] %></p>
+ 
+ <div class='container px-5 px-sm-0'>
+  
+  <%= render 'layouts/userinfo' %>
+
+   <div class='col-md-8 offset-md-1'>
+     <h2>Review detail</h2>
+        <table class='table'>
+          <tbody>
+            <tr>
+              
+              <td>
+                <%= link_to attachment_image_tag(@user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "default-image.jpg"), user_path(@user) %>
+                <br><%= link_to @review.user.name, user_path(@user) %>
+              </td>
+              
+              <td>
+                <%= link_to @review.title, review_path(@review) %>
+              </td>
+              
+              <td>
+                <%= @review.body %>
+              </td>
+              
+              <% if @review.user == current_user %>
+                <td>
+                  <div class="btn btn-sm btn-success">
+                    <%= link_to "Edit", edit_review_path(@review) %>
+                  </div>
+                </td>
+              
+                <td>
+                  <div class="btn btn-sm btn-danger">
+                    <%= link_to "Destroy", review_path(@review), method: :delete %>
+                  </div>
+                </td>
+              
+              <% else %>
+                <td></td>
+                <td></td>
+              <% end %>
+          
+            </tr>
+          </tbody>
+        </table>
+   </div>
+ </div>
+
+</main>
+      
