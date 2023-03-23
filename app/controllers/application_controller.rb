@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   
   protect_from_forgery
   
@@ -7,6 +8,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     reviews_path
+  end
+  
+  def set_csrf_token_header
+    response.set_header('X-CSRF-Token', form_authenticity_token)
   end
 
   protected

@@ -26,14 +26,14 @@
               
               <% if @review.user == current_user %>
                 <td>
-                  <div class="btn btn-sm btn-success">
-                    <%= link_to "Edit", edit_review_path(@review) %>
+                  <div>
+                    <%= link_to "Edit", edit_review_path(@review), class="btn btn-sm btn-success"%>
                   </div>
                 </td>
               
                 <td>
-                  <div class="btn btn-sm btn-danger">
-                    <%= link_to "Destroy", review_path(@review), method: :delete %>
+                  <div>
+                    <%= link_to "Destroy", review_path(@review), class="btn btn-sm btn-danger", method: :delete %>
                   </div>
                 </td>
               
@@ -47,6 +47,5 @@
         </table>
    </div>
  </div>
-
 </main>
       
