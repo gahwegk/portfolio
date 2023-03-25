@@ -30,7 +30,7 @@ class ReviewsController < ApplicationController
     if @review.save
      redirect_to review_path(@review), notice: 'You have created review successfully.'
     else
-     render :index
+     render :new
     end 
   end
   

@@ -5,4 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   attachment :profile_image
   has_many :reviews, dependent: :destroy
+  validates :name, length: { minimum: 2, maximum: 20 }, presence: true, uniqueness: true
 end
