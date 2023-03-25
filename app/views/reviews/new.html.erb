@@ -13,24 +13,26 @@
   <div class="container">
    <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2 class="mt-3">New review</h2>
-        <form action="/reviews" accept-charset="UTF-8" method="post">
-          <input type="hidden" name="authenticity_token" value="euanJm1ZnqPSafYMeiMeLp0kaGQ8zlC8Tb6fDfS5TUDo5c3F1yLum7coItykOTPY4kX6sjIEQ5oLIaYwHZTIyQ" autocomplete="off" />
+
+  <h1>Create Review</h1>
+  <%= form_with model:@review, local:true do |f| %>
+    <div>
+      <div class="form-group">
+        <label for="inputTitle">Title</label>
+        <div class="form-controll"><%= f.text_field :title, autofocus: true, id:"inputTitle"%></div>
+      </div>
   
-          <div class="form-group">
-            <label for="review_title">Title</label>
-            <input class="form-control" type="text" name="review[title]" id="review_title" />
-          </div>
+      <div class="form-group">
+        <label for="inputReview">Review</label>
+        <div class="form-controll"><%= f.text_field :review, autofocus: true, id:"inputReview" %></div>
+      </div>
   
-          <div class="form-group">
-            <label for="review_body">Review</label>
-            <textarea class="form-control" name="review[body]" id="review_body"></textarea>
-          </div>
-  
-          <div class="form-group">
-            <input type="submit" name="commit" value="Create Review" class="btn btn-success" data-disable-with="Create Review" />
-          </div>
-        </form>
+      <div class="form-group">
+           <input type="submit" name="commit" value="Create Review" class="btn btn-secondary" data-disable-with="Create Review" />
+      </div>
+  <% end %>
+    
+     </div>
     </div>
    </div>
   </div>        
