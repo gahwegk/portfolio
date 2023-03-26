@@ -24,6 +24,9 @@
                <td><%= link_to attachment_image_tag(review.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "default-image.jpg"), user_path(review.user) %></td>
                <td><%= link_to review.title, review_path(review) %></td>
                <td><%= review.review %></td>
+               <td>
+                <p><%= link_to "#{review.post_comments.count} コメント", review_path(review.id) %></p>
+               </td>
             <% end %>
               </tr>
           </tbody>
