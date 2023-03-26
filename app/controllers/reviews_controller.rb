@@ -3,8 +3,7 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @reviews = Review.all
-    @review = Review.new
+    @reviews = Review.page(params[:page]).reverse_order
   end
 
   def show

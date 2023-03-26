@@ -27,6 +27,9 @@
                <td>
                 <p><%= link_to "#{review.post_comments.count} コメント", review_path(review.id) %></p>
                </td>
+               <td>
+                <p><%= link_to "#{review.favorites.count} いいね", review_path(review.id) %></p>
+               </td>
             <% end %>
               </tr>
           </tbody>
@@ -34,5 +37,6 @@
         </table>
 
       </div>
+      <%= paginate @reviews %>
  </div>
 </main>    
