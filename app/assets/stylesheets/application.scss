@@ -17,3 +17,9 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+header, nav, h2, .main-visual, footer {
+font-family: 'Courgette', cursive;
+}
