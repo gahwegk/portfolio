@@ -1,8 +1,8 @@
 <main>
-  <p id="notice"><%= flash[:notice] %></p>
- 
- <div class='container px-5 px-sm-0'>
   
+  <div class='container'>
+  <p id="notice"><%= flash[:notice] %></p>
+  <div class='px-5 px-sm-0'>
   <%= render 'layouts/userinfo' %>
 
    <div class='col-md-8 offset-md-1'>
@@ -26,15 +26,11 @@
               
               <% if @review.user == current_user %>
                 <td>
-                  <div class="btn btn-sm btn-success">
-                    <%= link_to "Edit", edit_review_path(@review) %>
-                  </div>
+                   <%= link_to "Edit", edit_review_path(@review), class: "btn btn-sm btn-success" %>
                 </td>
               
                 <td>
-                  <div class="btn btn-sm btn-danger">
-                    <%= link_to "Destroy", review_path(@review), method: :delete %>
-                  </div>
+                    <%= link_to "Destroy", review_path(@review), class: "btn btn-sm btn-danger", method: :delete %>
                 </td>
               
               <% else %>
@@ -83,6 +79,7 @@
           <% end %>
         </div>
         
+     </div>
    </div>
  </div>
 </main>

@@ -1,8 +1,7 @@
 <main>
-  <p id="notice"><%= flash[:notice] %></p>
-  
+
  <div class='container'%>
-    
+    <p id="notice"><%= flash[:notice] %></p>
 
      <div class='offset-md-1'>
         <h2>Reviews</h2>
@@ -35,8 +34,8 @@
           </tbody>
         
         </table>
-
+        <%= paginate @reviews %>
       </div>
-      <%= paginate @reviews %>
+      
  </div>
 </main>    

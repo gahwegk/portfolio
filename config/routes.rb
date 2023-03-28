@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resources :reviews, only:[:index, :show, :edit, :new, :create, :update, :destroy] do
     resource :favorites, only:[:create, :destroy]
     resources :post_comments, only:[:create, :destroy]
+
   end
 end
