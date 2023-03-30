@@ -22,7 +22,7 @@
             <% @reviews.each do |review| %>
             <tr>
               <td><%=link_to attachment_image_tag(@user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "default-image.jpg"), user_path(@user) %></td>
-              <td><%= link_to review.title, review_path(review.id) %></</td>
+              <td class="text-break"><%= link_to review.title, review_path(review.id) %></</td>
               <td><%= review.review %></td>
             <% end %>
             </tr>

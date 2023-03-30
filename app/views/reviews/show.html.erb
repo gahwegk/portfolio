@@ -16,8 +16,8 @@
                 <br><%= link_to @review.user.name, user_path(@user) %>
               </td>
               
-              <td>
-                <%= link_to @review.title, review_path(@review) %>
+              <td class="text-break">
+                <%= @review.title %>
               </td>
               
               <td>

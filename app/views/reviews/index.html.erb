@@ -5,8 +5,8 @@
 
      <div class='offset-md-1'>
         <h2>Reviews</h2>
-        
-        <table class='table table-hover table-inverse'>
+    
+        <table class='table table-hover table-inverse '>
         
           <thead>
             <tr>
@@ -21,12 +21,12 @@
             <% @reviews.each do |review| %>
               <tr>
                <td><%= link_to attachment_image_tag(review.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "default-image.jpg"), user_path(review.user) %></td>
-               <td><%= link_to review.title, review_path(review) %></td>
+               <td class="text-break"><%= link_to review.title, review_path(review) %></td>
                <td><%= review.review %></td>
-               <td>
+               <td class="text-nowrap">
                 <p><%= link_to "#{review.post_comments.count} コメント", review_path(review.id) %></p>
                </td>
-               <td>
+               <td class="text-nowrap">
                 <p><%= link_to "#{review.favorites.count} いいね", review_path(review.id) %></p>
                </td>
             <% end %>
@@ -34,6 +34,7 @@
           </tbody>
         
         </table>
+    
         <%= paginate @reviews %>
       </div>
       
