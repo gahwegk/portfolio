@@ -10,13 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_26_001840) do
+ActiveRecord::Schema.define(version: 2023_04_05_012530) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
+  end
+
+  create_table "hashtags_reviews", id: false, force: :cascade do |t|
+    t.integer "review_id_id"
+    t.integer "hashtag_id_id"
+    t.index ["hashtag_id_id"], name: "index_hashtags_reviews_on_hashtag_id_id"
+    t.index ["review_id_id"], name: "index_hashtags_reviews_on_review_id_id"
   end
 
   create_table "post_comments", force: :cascade do |t|
