@@ -20,12 +20,12 @@
     <div>
       <div class="form-group">
         <label for="inputTitle">Title</label>
-        <div class="form-controll"><%= f.text_field :title, autofocus: true, id:"inputTitle"%></div>
+        <div class="form-controll"><%= f.text_field :title, autofocus: true, id:"inputTitle", style:'width:100%'%></div>
       </div>
   
       <div class="form-group">
         <label for="inputReview">Review</label>
-        <div class="form-controll"><%= f.text_field :review, autofocus: true, id:"inputReview" %></div>
+        <div class="form-controll"><%= f.text_area :review, autofocus: true, id:"inputReview", rows: '10', style:'width:100%' %></div>
       </div>
   
       <div class="form-group">

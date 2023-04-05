@@ -6,30 +6,31 @@
      <div class='offset-md-1'>
         <h2>Reviews</h2>
     
-        <table class='table table-hover table-inverse '>
+        <table class='table table-hover table-inverse'>
         
           <thead>
             <tr>
-              <th></th>
               <th>Title</th>
               <th>Reviews</th>
-              <th colspan="3"></th>
+              <th colspan="2"></th>
             </tr>
           </thead>
         
           <tbody>
             <% @reviews.each do |review| %>
               <tr>
-               <td><%= link_to attachment_image_tag(review.user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "default-image.jpg"), user_path(review.user) %></td>
+               <!--td><%#= link_to attachment_image_tag(review.user, :profile_image, :fill, 10, 10, format: 'jpeg', fallback: "default-image.jpg"), user_path(review.user) %></td-->
                <td class="text-break"><%= link_to review.title, review_path(review) %></td>
-               <td><%= review.review %></td>
+               <td class="text-break"><%= simple_format(review.review) %></td>
                <td class="text-nowrap">
-                <p><%= link_to "#{review.post_comments.count} コメント", review_path(review.id) %></p>
+                <p>comments(<%= review.post_comments.count %>)</p>
                </td>
                <td class="text-nowrap">
-                <p><%= link_to "#{review.favorites.count} いいね", review_path(review.id) %></p>
+                <p><i class="fa-solid fa-heart text-danger"></i>
+                 <%= review.favorites.count %></p>
                </td>
             <% end %>
+            
               </tr>
           </tbody>
         

@@ -3,27 +3,26 @@
   <div class='container'>
   <p id="notice"><%= flash[:notice] %></p>
   <div class='px-5 px-sm-0'>
-  <%= render 'layouts/userinfo' %>
+  <%#= render 'layouts/userinfo' %>
 
    <div class='col-md-8 offset-md-1'>
-     <h2>Review detail</h2>
+     <!--h2>Review detail</h2-->
+     <h2 class="my-3">
+                <%= @review.title %>
+              </h2>
         <table class='table'>
           <tbody>
             <tr>
               
               <td>
-                <%= link_to attachment_image_tag(@user, :profile_image, :fill, 70, 70, format: 'jpeg', fallback: "default-image.jpg"), user_path(@user) %>
-                <br><%= link_to @review.user.name, user_path(@user) %>
+             
+              
+              written by : <%#= link_to attachment_image_tag(@user, :profile_image, :fill, 10, 10, format: 'jpeg', fallback: "default-image.jpg"), user_path(@user) %>
+              <%= link_to @review.user.name, user_path(@user), class: 'text-muted' %>
               </td>
               
-              <td class="text-break">
-                <%= @review.title %>
-              </td>
-              
-              <td>
-                <%= @review.review %>
-              </td>
-              
+             
+             
               <% if @review.user == current_user %>
                 <td>
                    <%= link_to "Edit", edit_review_path(@review), class: "btn btn-sm btn-success" %>
@@ -37,48 +36,66 @@
                 <td></td>
                 <td></td>
               <% end %>
-          
-            </tr>
-          </tbody>
-        </table>
-        
-        <div>
-          <p>comments：<%= @review.post_comments.count %></p>
-          <% @review.post_comments.each do |post_comment| %>
-            <%= post_comment.user.name %>
-            <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
-            
-            <% if post_comment.user == current_user %>
-            <div>
-              <%= link_to "Destroy", review_post_comment_path(post_comment.review, post_comment), method: :delete %>
-            </div>
-            <% end %>
-          <% end %>  
-          
-            <% if @review.favorited_by?(current_user) %>
+              
+              <td>
+           <% if @review.favorited_by?(current_user) %>
              <p>
                <%= link_to review_favorites_path(@review), method: :delete do %>
-                 ♥<%= @review.favorites.count %> いいね
+                 <i class="fa-solid fa-heart text-danger"></i>
+                 
                <% end %>
+               <%= @review.favorites.count %>
              </p>
             <% else %>
              <p>
                <%= link_to review_favorites_path(@review), method: :post do %>
-                 ♡<%= @review.favorites.count %> いいね
+                 <i class="fa-regular fa-heart text-muted"></i>
+                 
                <% end %>
+               <%= @review.favorites.count %>
              </p>
             <% end %>
+              
+            </td>
+            
+            </tr>
+          </tbody>
+        </table>
+        <h5 class="my-2">Review detail</h5>
+         <div class="border border-warning p-2">
+                <%= simple_format(@review.review) %>
+              </div>
+        
+        <h5 class="mt-5 mb-2">Comments (<%= @review.post_comments.count %>)</h5>       
+        <ol class="list-group list-group-numbered">
+          <li class="list-group-item">
+          <% @review.post_comments.each do |post_comment| %>
+          
+            <p class='font-weight-bold'><%= post_comment.user.name %></p>
+            <%= simple_format(post_comment.comment) %>
+            
+            <%#= post_comment.created_at.strftime('%Y/%m/%d') %>
+            <% if post_comment.user == current_user %>
+            <div class="text-right">
+              <%= link_to "Destroy", review_post_comment_path(post_comment.review, post_comment), method: :delete %>
+            </div>
+            <% end %>
+          <% end %>  
+          </li>
+           
             
           
-        </div>
+
 
         <div>
           <%= form_with(model:[@review, @post_comment], local: true) do |f| %>
-             <%= f.text_area :comment, rows:'5',placeholder: "comment here" %>
-             <%= f.submit "Send" %>
+             <div><%= f.text_area :comment, autofocus: true, id:"Inputcomment", placeholder: "comment here", class: 'mt-2 form-controll', rows: '3', style:'width:100%' %></div>
+           
+            <%= f.submit "Send", class: 'btn btn-primary mt-2' %>
+            
           <% end %>
         </div>
-        
+              </div>  
      </div>
    </div>
  </div>
