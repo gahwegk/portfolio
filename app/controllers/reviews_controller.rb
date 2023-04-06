@@ -51,6 +51,15 @@ class ReviewsController < ApplicationController
     redirect_to reviews_path, notice: 'You have destroyed review successfully.'
   end
   
+  def hashtag
+    @user = current_user
+    @tag = Hashtag.find_by(hashname: params[:name])
+    @reviews = @tag.reviews
+  end
+  
+  
+  
+  
   private
   
   def review_params

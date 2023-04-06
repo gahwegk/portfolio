@@ -61,6 +61,8 @@
             </tr>
           </tbody>
         </table>
+        
+        <%#= render_with_hashtags(@review.caption) %>
         <h5 class="my-2">Review detail</h5>
          <div class="border border-warning p-2">
                 <%= simple_format(@review.review) %>

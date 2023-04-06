@@ -10,7 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_04_05_012530) do
+ActiveRecord::Schema.define(version: 2023_04_05_015921) do
+
+  create_table "create_review_hashtags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"

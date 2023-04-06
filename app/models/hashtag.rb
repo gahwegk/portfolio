@@ -1,4 +1,5 @@
 class Hashtag < ApplicationRecord
-  has_ans_belongs_to_many :reviews
   validates :hashname, presence: true, length: {maximum:99}
+  has_many :review_hashtags
+  has_many :reivews, through: :review_hashtags
 end

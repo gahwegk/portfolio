@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   
   resources :users, only: [:index, :show, :edit, :update]
   
-  resources :reviews, only:[:index, :show, :edit, :new, :create, :update, :destroy] do
+  resources :reviews, only:[:index, :show, :edit, :new, :create, :update, :destroy, :hashtag] do
     resource :favorites, only:[:create, :destroy]
     resources :post_comments, only:[:create, :destroy]
-
+  
+  get '/review/hashtag/:name', to: "reviews#hashtag" 
   end
 end

@@ -1,0 +1,9 @@
+<h2>ハッシュタグ #<%= @tag.hashname %></h2>
+  <ul>
+    <% @reviews.each do |photo| %>
+      <li>
+        <%= link_to review_path(review.id) do %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
