@@ -1,8 +1,8 @@
 <main>
 
   <div class="container">
-   <p id="notice"><%= flash[:notice] %></p>       
-        
+   <p id="notice"><%= flash[:notice] %></p>
+
     <% if @review.errors.any? %>
      <%= @review.errors.count %> errors prohibited this obj from being saved:
       <ul>
@@ -10,8 +10,8 @@
         <li><%= message %></li>
         <% end %>
       </ul>
-    <% end %>    
-  
+    <% end %>
+
    <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
 
@@ -22,20 +22,20 @@
         <label for="inputTitle">Title</label>
         <div class="form-controll"><%= f.text_field :title, autofocus: true, id:"inputTitle", style:'width:100%'%></div>
       </div>
-  
+
       <div class="form-group">
         <label for="inputReview">Review</label>
         <div class="form-controll"><%= f.text_area :review, autofocus: true, id:"inputReview", rows: '10', style:'width:100%' %></div>
       </div>
-  
+
       <div class="form-group">
            <input type="submit" name="commit" value="Create Review" class="btn btn-secondary" data-disable-with="Create Review" />
       </div>
   <% end %>
-    
+
      </div>
     </div>
    </div>
-  </div>        
+  </div>
 
 </main>

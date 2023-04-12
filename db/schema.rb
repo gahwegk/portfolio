@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_26_001840) do
+ActiveRecord::Schema.define(version: 2023_04_12_073828) do
+
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "create_review_hashtags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -19,12 +30,35 @@ ActiveRecord::Schema.define(version: 2023_03_26_001840) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
+  end
+
+  create_table "hashtags_reviews", id: false, force: :cascade do |t|
+    t.integer "review_id_id"
+    t.integer "hashtag_id_id"
+    t.index ["hashtag_id_id"], name: "index_hashtags_reviews_on_hashtag_id_id"
+    t.index ["review_id_id"], name: "index_hashtags_reviews_on_review_id_id"
+  end
+
   create_table "post_comments", force: :cascade do |t|
     t.text "comment"
     t.integer "user_id"
     t.integer "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "review_categories", force: :cascade do |t|
+    t.integer "review_id"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_review_categories_on_category_id"
+    t.index ["review_id"], name: "index_review_categories_on_review_id"
   end
 
   create_table "reviews", force: :cascade do |t|
