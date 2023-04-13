@@ -56,6 +56,16 @@ class ReviewsController < ApplicationController
     redirect_to reviews_path, notice: 'You have destroyed review successfully.'
   end
   
+  def search
+    if params[:keyword].present?
+      @reviews = Review.where('title LIKE ?', "%#{params[:keyword]}%").page(params[:page]).reverse_order
+      @keyword = params[:keyword]
+    else
+      @reviews = Review.all.page(params[:page]).reverse_order
+    end
+  end
+  
+  
   private
   
   def review_params
