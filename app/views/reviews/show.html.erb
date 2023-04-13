@@ -55,6 +55,11 @@
                <%= @review.favorites.count %>
              </p>
             <% end %>
+            
+            <div>Category</div>
+             <% @review.categories.each do |category| %>
+              <%= link_to category.categoryname, reviews_path(category_id: category.id) %>
+             <% end %>
 
             </td>
 

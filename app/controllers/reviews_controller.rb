@@ -3,10 +3,15 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!
   
   def index
-    @reviews = Review.page(params[:page]).reverse_order
-    
+    @categories = Category.all
+    if params[:category_id]
+      @category = Category.find(params[:category_id])
+      @reviews = @category.reviews.page(params[:page]).reverse_order
+    else
+      @reviews = Review.page(params[:page]).reverse_order
+    end
   end
-
+  
   def show
     @review = Review.find(params[:id])
     @user = @review.user
@@ -54,6 +59,6 @@ class ReviewsController < ApplicationController
   private
   
   def review_params
-    params.require(:review).permit(:title, :review)
+    params.require(:review).permit(:title, :review, {category_ids: [] })
   end  
 end
