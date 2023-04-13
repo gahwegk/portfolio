@@ -58,7 +58,7 @@ class ReviewsController < ApplicationController
   
   def search
     if params[:keyword].present?
-      @reviews = Review.where('title LIKE ?', "%#{params[:keyword]}%").page(params[:page]).reverse_order
+      @reviews = Review.where(['title LIKE ? OR review LIKE?', "%#{params[:keyword]}%" , "%#{params[:keyword]}%"]).page(params[:page]).reverse_order
       @keyword = params[:keyword]
     else
       @reviews = Review.all.page(params[:page]).reverse_order
