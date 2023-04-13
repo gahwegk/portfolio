@@ -31,6 +31,11 @@
       </div>
       
       <div class="form-group">
+        <label for="inputYoutubeUrl">YoutubeURL</label>
+        <div class="form-controll"><%= f.text_field :media_url, autofocus: true, id:"inputYoutubeUrl", style:'width:100%' %></div>
+      </div>
+      
+      <div class="form-group">
       <%= f.label :category %>
       <%= f.collection_check_boxes(:category_ids, Category.all, :id, :categoryname) do |category| %> 
         <%= category.label do %>

@@ -27,6 +27,11 @@
         <label for="inputReview">Review</label>
         <div class="form-controll"><%= f.text_area :review, autofocus: true, id:"inputReview", rows: '10', style:'width:100%' %></div>
       </div>
+      
+      <div class="form-group">
+        <label for="inputYoutubeUrl">YoutubeURL</label>
+        <div class="form-controll"><%= f.text_field :media_url, autofocus: true, id:"inputYoutubeUrl", style:'width:100%' %></div>
+      </div>
 
 　　　<div class="form-group">
       <%= f.label :category %>
