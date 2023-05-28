@@ -2,12 +2,13 @@ class Review < ApplicationRecord
   belongs_to :user
   validates :title, presence: true
   validates :review, presence: true
+  validates :category_ids, presence: true
   
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
-  has_many :review_categories
-  has_many :categories, through: :review_categories
+  has_many :review_categories, foreign_key: 'review_id'
+  has_many :categories , through: :review_categories
   
   def favorited_by?(user)
    favorites.where(user_id: user.id).exists?

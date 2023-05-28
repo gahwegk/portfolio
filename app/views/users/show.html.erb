@@ -36,6 +36,42 @@
           </tbody>
         
         </table>
+        
+         <h2>Favorites</h2>
+         <% if @favorite_list.present? %>
+        <table class='table table-hover table-inverse'>
+          
+          <thead>
+            <tr>
+              
+              <th>Title</th>
+              <th>Review</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+          
+          
+          <tbody>
+            <% @favorite_list.each do |review| %>
+            <tr>
+               <!--td><%#= link_to attachment_image_tag(review.user, :profile_image, :fill, 10, 10, format: 'jpeg', fallback: "default-image.jpg"), user_path(review.user) %></td-->
+               <td class="text-break"><%= link_to review.title, review_path(review) %></td>
+               <td class="text-break"><%= simple_format(review.review) %></td>
+               <td class="text-nowrap">
+                <p>comments(<%= review.post_comments.count %>)</p>
+               </td>
+               <td class="text-nowrap">
+                <p><i class="fa-solid fa-heart text-danger"></i>
+                 <%= review.favorites.count %></p>
+               </td>
+            <% end %>
+            </tr>
+          </tbody>
+        
+        </table>
+        <% end %>
+        
+        
     </div>
    </div>
   </div>

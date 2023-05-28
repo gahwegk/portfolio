@@ -66,13 +66,17 @@
         
         <div>Category</div>
              <% @review.categories.each do |category| %>
-              <%= link_to category.categoryname, reviews_path(category_id: category.id) %>
+              <%= category.categoryname %>
              <% end %>
         
+        <%if @review.media_url.present? %>
         <div>YoutubeURL</div>
          <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= @review.split_id_from_youtube_url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
            
          </iframe>
+        <% else %>
+        <div></div>
+        <% end %>
              
         
         
